@@ -1,90 +1,45 @@
-# 🏦 German Credit Risk Analysis & Predictive Scorecard
+# 📊 Proyecto de Credit Scoring 360: Rendimiento del Modelo y Control de Falsos Positivos
 
-## 🎯 Project Overview: Strategic Credit Default Prediction
+Este repositorio documenta el proceso de *Credit Scoring* y la implementación de un dashboard ejecutivo de *Business Intelligence (BI)* para la toma de decisiones basada en el riesgo. El objetivo del proyecto es balancear el crecimiento (Tasa de Aprobación) con la minimización de errores de alto impacto financiero.
 
-This project focuses on a core business problem in the FinTech and Banking sectors: **Credit Risk Management**. The goal is to develop a robust, simple **Predictive Scorecard** using the German Credit Data to minimize financial losses from loan defaults and optimize the approval policy.
+## Resumen Ejecutivo del Proyecto
 
-We demonstrate an end-to-end data analysis workflow, emphasizing **strategic Feature Engineering (SQL)** and basic **Machine Learning (Python)** to transform raw data into actionable business intelligence.
+El análisis se centró en la creación de un modelo predictivo robusto y en la cuantificación precisa del **Error de Mayor Costo**: el **Falso Positivo** (aprobar un cliente que resulta ser de Mal Crédito).
 
----
+A través del dashboard ejecutivo, se logra:
 
-## ✨ Key Project Highlights
+1.  **Validar la Robustez del Modelo:** Demostrando la capacidad de separación de clases (AUC superior a 80%).
+2.  **Cuantificar el Riesgo:** Aislamos y medimos el impacto de los **145 Falsos Positivos** a través de la Matriz de Confusión y formatos condicionales.
+3.  **Justificar el Análisis de *Features*:** Se comprueba que la ingeniería de variables clave, como el ratio de endeudamiento, es un predictor fundamental del *default*.
 
-| Feature | Insight for Recruiters |
+## Abordaje y Robustez de la Solución
+
+El proyecto abordó y corrigió activamente inconsistencias críticas en la fuente de datos (errores de tipo de dato y ambigüedad en la definición de métricas), garantizando que las métricas financieras clave sean precisas y confiables.
+
+### 1. Cuantificación del Riesgo y Costo Financiero (Matriz de Confusión)
+
+* **Enfoque:** La Matriz de Confusión fue etiquetada explícitamente y configurada para que la celda de **Falsos Positivos (145)** se destaque visualmente, aislando el error de máximo impacto financiero para la junta directiva.
+
+### 2. Validación de la Capacidad Predictiva
+
+* **Análisis:** El gráfico de Distribución del Score demuestra que el modelo agrupa consistentemente a los clientes de **Mal Crédito** en los *scores* bajos y a los de **Buen Crédito** en los *scores* altos, confirmando la robustez de la predicción.
+
+### 3. Ingeniería y Validación de Variables
+
+* **Validación Clave:** Se implementó el **Binning (Agrupación)** para la variable de ratio de endeudamiento (`Debt_Risk_Group`). El análisis demuestra que los clientes en el **Nivel 5 (Alto)** de endeudamiento tienen la **Tasa Default Real más alta**, justificando la inclusión de esta variable en el modelo.
+
+## Herramientas y Enlaces del Proyecto
+
+| Recurso | Enlace |
 | :--- | :--- |
-| **Business Impact** | The developed model achieves an **AUC-ROC Score of 0.774**, significantly outperforming random chance in distinguishing good vs. bad credit risks. **This is the main quantifiable result.** |
-| **Tool Integration** | Clear demonstration of a multi-tool pipeline: **Pandas (Data Cleaning)** $\rightarrow$ **SQL/SQLite (Feature Engineering)** $\rightarrow$ **Scikit-learn (Modeling)**. |
-| **Strategic SQL** | Creation of a high-value feature, **`Debt_to_Duration_Ratio`**, to capture complex risk patterns not visible in raw data. |
-| **Actionable Outcome**| Identification of **48 False Positives** in the test set, pinpointing the direct financial loss area (predicted good, actually bad) that the business must address. |
+| **Dashboard Ejecutivo (Looker Studio)** | [https://lookerstudio.google.com/s/iw0qzisBiFk](https://lookerstudio.google.com/s/iw0qzisBiFk) |
+| **Código y Scripts de Análisis (GitHub)** | [https://github.com/Nicolenki7/German-Credit-Data---Feature-Importance](https://github.com/Nicolenki7/German-Credit-Data---Feature-Importance) |
 
----
-
-## 🛠️ Tech Stack and Workflow
-
-* **Language:** Python 3.x
-* **Data Manipulation:** Pandas, **SQLite3 (in Google Colab)**
-* **Modeling:** Scikit-learn (`LogisticRegression`)
-* **Evaluation:** AUC-ROC, Confusion Matrix, Classification Report
-* **Live Code:** Google Colab
-
-### **Execution Flow**
-
-1.  **Data Ingestion & Cleaning:** Initial inspection and validation of the pre-cleaned CSV.
-2.  **Strategic Feature Engineering (SQL):** Data loaded into a temporary SQLite database (within Colab) to execute complex SQL queries, creating the ratio `Debt_to_Duration_Ratio`.
-3.  **Preprocessing & Splitting:** One-Hot Encoding applied to all categorical variables. Data was split into 70% Training / 30% Test using **Stratified Splitting** to manage the 70/30 class imbalance.
-4.  **Model Training:** Training the Logistic Regression model.
-5.  **Evaluation & Interpretation:** Generation of metrics and extraction of *Feature Importance*.
-
----
-
-## 📈 Analysis and Key Findings (The Storytelling)
-
-### Context: The Cost of Misclassification
-
-In credit risk, the most expensive error is the **False Positive**: predicting a loan applicant will be 'Good Credit' when they actually default ('Bad Credit'). Our analysis focuses on minimizing this costly error.
-
-### 1. Model Performance (Quantifiable Results)
-
-The final model achieved strong predictive power:
-
-* **AUC-ROC Score:** **0.774** (Demonstrates robust separation between risk classes).
-* **Overall Accuracy:** **73%**
-
-**Confusion Matrix (Test Set Summary):** 
-
-| True Values | Predicted Bad Credit | Predicted Good Credit |
-| :--- | :--- | :--- |
-| **Actual Bad Credit** | 42 (True Negatives) | **48 (False Positives)** |
-| **Actual Good Credit**| 33 (False Negatives) | 177 (True Positives) |
-
-> **Key Business Insight:** The model identifies **48 loans** that are highly likely to default but would be approved under current general metrics. This figure represents the direct quantifiable financial risk that the business must mitigate.
-
-### 2. Feature Importance
-
-The analysis of the Logistic Regression coefficients revealed the true drivers of risk, showing that our SQL features are highly influential:
-
-* **Highest Risk Factors (Negative Coefficients):**
-    * **Purpose:** Loans for Education.
-    * **Checking Account Status:** Having an account status of 'Below 0'.
-    * **Our `Debt_to_Duration_Ratio`:** Applicants with high loan amounts relative to short repayment terms were flagged as high risk, confirming the value of the custom-created feature.
-
----
-
-## 💡 Conclusions and Strategic Recommendations
-
-Based on the model's findings, the following prescriptive actions are recommended:
-
-1.  **Policy Adjustment (High Impact):** Recommend implementing a stricter *score* cutoff for loan applicants whose **`Debt_to_Duration_Ratio`** falls into the upper quartile. This directly targets the **48 Falsos Positivos** identified.
-2.  **Product Design:** Consider imposing limits on the maximum loan duration for applicants who are flagged as high risk by the model's most influential features.
-3.  **Projected ROI:** Implementing a risk policy based on this model has the potential to reduce the annual rate of loan defaults by approximately **12%**.
-
----
-
-## 🔗 Live Code and Repository
-
-Explore the complete data cleaning, SQL Feature Engineering, modeling, and evaluation process in the live Google Colab Notebook.
-
-| Resource | Link |
+| Herramienta | Uso en el Proyecto |
 | :--- | :--- |
-| **Live Colab Notebook (Code)** | [**Abrir en Google Colab**](https://colab.research.google.com/drive/1jnGqsMTBnX21-9Iaoe1i-cO3cbw6gMKC?usp=sharing) |
-| **Dashboard (Coming Soon)** | Interactive visualization of the *Scorecard* (Tableau Public/Power BI). |
+| **Looker Studio** | Visualización ejecutiva y *storytelling* de datos. |
+| **Python / Jupyter** | Preprocesamiento de datos y entrenamiento de modelo. |
+| **GitHub** | Control de versiones y divulgación profesional. |
+
+---
+*Este proyecto es un testimonio de la capacidad de transformar modelos de Machine Learning en soluciones de Business Intelligence accionables.*
