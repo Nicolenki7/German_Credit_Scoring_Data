@@ -1,46 +1,98 @@
-# 📊 Proyecto de Credit Scoring 360: Rendimiento del Modelo y Control de Falsos Positivos
+# 🏦 German Credit Scoring Data
 
-Este repositorio documenta el proceso de *Credit Scoring* y la implementación de un dashboard ejecutivo de *Business Intelligence (BI)* para la toma de decisiones basada en el riesgo. El objetivo del proyecto es balancear el crecimiento (Tasa de Aprobación) con la minimización de errores de alto impacto financiero.
+**Credit Risk Model | Logistic Regression | Feature Importance | Business Storytelling**
 
-## Resumen Ejecutivo del Proyecto
-
-El análisis se centró en la creación de un modelo predictivo robusto y en la cuantificación precisa del **Error de Mayor Costo**: el **Falso Positivo** (aprobar un cliente que resulta ser de Mal Crédito).
-
-A través del dashboard ejecutivo, se logra:
-
-1.  **Validar la Robustez del Modelo:** Demostrando la capacidad de separación de clases (AUC superior a 80%).
-2.  **Cuantificar el Riesgo:** Aislamos y medimos el impacto de los **145 Falsos Positivos** a través de la Matriz de Confusión y formatos condicionales.
-3.  **Justificar el Análisis de *Features*:** Se comprueba que la ingeniería de variables clave, como el ratio de endeudamiento, es un predictor fundamental del *default*.
-
-## Abordaje y Robustez de la Solución
-
-El proyecto abordó y corrigió activamente inconsistencias críticas en la fuente de datos (errores de tipo de dato y ambigüedad en la definición de métricas), garantizando que las métricas financieras clave sean precisas y confiables.
-
-### 1. Cuantificación del Riesgo y Costo Financiero (Matriz de Confusión)
-
-* **Enfoque:** La Matriz de Confusión fue etiquetada explícitamente y configurada para que la celda de **Falsos Positivos (145)** se destaque visualmente, aislando el error de máximo impacto financiero para la junta directiva.
-
-### 2. Validación de la Capacidad Predictiva
-
-* **Análisis:** El gráfico de Distribución del Score demuestra que el modelo agrupa consistentemente a los clientes de **Mal Crédito** en los *scores* bajos y a los de **Buen Crédito** en los *scores* altos, confirmando la robustez de la predicción.
-
-### 3. Ingeniería y Validación de Variables
-
-* **Validación Clave:** Se implementó el **Binning (Agrupación)** para la variable de ratio de endeudamiento (`Debt_Risk_Group`). El análisis demuestra que los clientes en el **Nivel 5 (Alto)** de endeudamiento tienen la **Tasa Default Real más alta**, justificando la inclusión de esta variable en el modelo.
-
-## Herramientas y Enlaces del Proyecto
-
-| Recurso | Enlace |
-| :--- | :--- |
-| **Dashboard Ejecutivo (Looker Studio)** | [https://lookerstudio.google.com/s/iw0qzisBiFk](https://lookerstudio.google.com/s/iw0qzisBiFk) |
-| **Código y Scripts de Análisis (GitHub)** | [https://github.com/Nicolenki7/German-Credit-Data---Feature-Importance](https://github.com/Nicolenki7/German-Credit-Data---Feature-Importance) |
-| **Kaggle** | https://www.kaggle.com/code/nicolaszalazar73/credit-scoring-360-notebook
-
-| Herramienta | Uso en el Proyecto |
-| :--- | :--- |
-| **Looker Studio** | Visualización ejecutiva y *storytelling* de datos. |
-| **Python / Jupyter** | Preprocesamiento de datos y entrenamiento de modelo. |
-| **GitHub** | Control de versiones y divulgación profesional. |
+[![Python](https://img.shields.io/badge/Python-3776AB?logo=python)](https://www.python.org/)
+[![scikit-learn](https://img.shields.io/badge/scikit--learn-F7931E?logo=scikit-learn)](https://scikit-learn.org/)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 ---
-*Este proyecto es un testimonio de la capacidad de transformar modelos de Machine Learning en soluciones de Business Intelligence accionables.*
+
+## 📋 Overview
+
+Logistic Regression model for credit risk assessment with coefficient-based feature importance analysis and business storytelling. Identifies key drivers for credit approval/rejection decisions.
+
+---
+
+## 💼 Business Impact
+
+- **Risk Assessment**: Data-driven credit approval decisions
+- **Driver Analysis**: Understand factors influencing credit risk
+- **Regulatory Compliance**: Interpretable model for auditing
+- **Business Storytelling**: Translate coefficients to business actions
+
+---
+
+## 🛠️ Technical Stack
+
+| Category | Technologies |
+| :--- | :--- |
+| **Language** | Python |
+| **Machine Learning** | scikit-learn (Logistic Regression) |
+| **Analysis** | Pandas, NumPy, Jupyter |
+| **Visualization** | Matplotlib, Seaborn |
+
+---
+
+## 🚀 Key Features
+
+### Logistic Regression Model
+- Credit risk classification (Good/Bad)
+- Probability-based risk scoring
+
+### Coefficient Analysis
+- Feature importance interpretation
+- Odds ratios for business stakeholders
+
+### Business Storytelling
+- Translate technical results to credit policies
+- Actionable recommendations for risk management
+
+---
+
+## 🔧 Setup & Installation
+
+```bash
+# Clone the repository
+git clone https://github.com/Nicolenki7/German_Credit_Scoring_Data.git
+cd German_Credit_Scoring_Data
+
+# Install dependencies
+pip install -r requirements.txt
+
+# Run analysis
+jupyter notebook credit_scoring_analysis.ipynb
+```
+
+---
+
+## 🔗 Links
+
+| Resource | URL |
+| :--- | :--- |
+| **Repository** | https://github.com/Nicolenki7/German_Credit_Scoring_Data |
+| **Dataset** | [German Credit on UCI](https://archive.ics.uci.edu/ml/datasets/statlog+(german+credit+data)) |
+
+---
+
+## 📝 Resumen en Español
+
+Modelo de Regresión Logística para evaluación de riesgo crediticio con análisis de importancia de features basado en coeficientes y business storytelling. Identifica drivers clave para decisiones de aprobación/rechazo de crédito.
+
+---
+
+## 📄 License
+
+MIT License
+
+---
+
+## 👤 Author
+
+**Nicolás Zalazar** | Senior Data Engineer
+
+- GitHub: [@Nicolenki7](https://github.com/Nicolenki7)
+
+---
+
+*Last Updated: March 2026*
