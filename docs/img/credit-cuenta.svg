@@ -1,0 +1,18 @@
+<svg xmlns='http://www.w3.org/2000/svg' width='660' height='300' viewBox='0 0 660 300' role='img' aria-label='Sin cuenta o en números rojos: el doble de riesgo'>
+<rect width='660' height='300' fill='#ffffff'/>
+<text x='12' y='24' font-family='-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif' font-size='15' font-weight='600' fill='#1f2328'>Sin cuenta o en números rojos: el doble de riesgo</text>
+<text x='12' y='42' font-family='-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif' font-size='12' fill='#8d8d8d'>Tasa de impago por cuenta corriente · media 30.0%</text>
+<line x1='12' y1='254.0' x2='648' y2='254.0' stroke='#d0d7de' stroke-width='1'/>
+<rect x='47.0' y='54.0' width='89.0' height='200.0' rx='3' fill='#da1e28'/>
+<text x='91.5' y='47.0' font-family='-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif' font-size='12' font-weight='600' text-anchor='middle' fill='#1f2328'>49.3%</text>
+<text x='91.5' y='272.0' font-family='-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif' font-size='11.5' text-anchor='middle' fill='#57606a'>sin fondo / &lt;0 DM</text>
+<rect x='206.0' y='95.6' width='89.0' height='158.4' rx='3' fill='#da1e28'/>
+<text x='250.5' y='88.6' font-family='-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif' font-size='12' font-weight='600' text-anchor='middle' fill='#1f2328'>39.0%</text>
+<text x='250.5' y='272.0' font-family='-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif' font-size='11.5' text-anchor='middle' fill='#57606a'>0-200 DM</text>
+<rect x='365.0' y='163.8' width='89.0' height='90.2' rx='3' fill='#0f62fe'/>
+<text x='409.5' y='156.8' font-family='-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif' font-size='12' font-weight='600' text-anchor='middle' fill='#1f2328'>22.2%</text>
+<text x='409.5' y='272.0' font-family='-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif' font-size='11.5' text-anchor='middle' fill='#57606a'>&gt;200 DM</text>
+<rect x='524.0' y='206.6' width='89.0' height='47.4' rx='3' fill='#0f62fe'/>
+<text x='568.5' y='199.6' font-family='-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif' font-size='12' font-weight='600' text-anchor='middle' fill='#1f2328'>11.7%</text>
+<text x='568.5' y='272.0' font-family='-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif' font-size='11.5' text-anchor='middle' fill='#57606a'>sin cuenta</text>
+</svg>
