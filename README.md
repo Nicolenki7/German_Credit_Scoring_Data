@@ -8,6 +8,12 @@
 
 ---
 
+## 📊 Interactive report
+
+**[Open the interactive report →](https://nicolenki7.github.io/German_Credit_Scoring_Data/report.html)** — filters, charts and the table behind them, rebuilt from the committed CSVs.
+
+---
+
 ## The business question
 
 A bank reviews **1,000 credit applications** knowing that **three in ten will not be repaid**. The two mistakes do not cost the same: a default costs the principal lent, while rejecting a good customer only costs the margin. So the question is not *how much* risk exists but **which variables separate it and where it concentrates**.
@@ -113,6 +119,7 @@ Un banco evalúa 1.000 solicitudes y sabe que 3 de cada 10 no se devuelven. El a
 | Resource | URL |
 | :--- | :--- |
 | **Repository** | https://github.com/Nicolenki7/German_Credit_Scoring_Data |
+| **Interactive report** | https://nicolenki7.github.io/German_Credit_Scoring_Data/report.html |
 | **Dataset** | [German Credit on UCI](https://archive.ics.uci.edu/ml/datasets/statlog+(german+credit+data)) |
 
 ---
