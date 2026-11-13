@@ -1,18 +1,75 @@
-<!doctype html>
-<html lang="es"><head><meta charset="utf-8">
+<!doctype html><html lang="es"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>German_Credit_Scoring_Data · Informe de datos</title><style>*{box-sizing:border-box}body{margin:0;background:#0b0f14;color:#e6edf3;font:15px/1.55 ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif}.wrap{max-width:900px;margin:0 auto;padding:46px 20px 70px}.eyebrow{margin:0 0 10px;font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:#38e07b}h1{margin:0 0 8px;font-size:clamp(26px,5vw,38px);line-height:1.1;letter-spacing:-.02em}.sub{margin:0;color:#8b9bab;font-size:14px}.kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:14px;margin:26px 0}.kpi{background:#121820;border:1px solid #1f2a36;border-radius:14px;padding:16px}.kpi .v{font-size:24px;font-weight:700;color:#38e07b;font-variant-numeric:tabular-nums}.kpi .l{font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:#8b9bab;margin-top:4px}.card{background:#121820;border:1px solid #1f2a36;border-radius:16px;padding:22px;margin-bottom:18px}.card h2{margin:0 0 16px;font-size:13px;letter-spacing:.12em;text-transform:uppercase;color:#8b9bab}code{background:#1a2531;padding:1px 6px;border-radius:6px;font-size:12px}.banner{background:#2a1f12;border:1px solid #5a3f1c;border-radius:12px;padding:14px 18px;margin:20px 0;font-size:13px;color:#f0c48a}.banner ul{margin:8px 0 0;padding-left:18px}footer{margin-top:38px;padding-top:18px;border-top:1px solid #1f2a36;font-size:12px;color:#68798a}</style></head>
-<body><main class="wrap">
-<p class="eyebrow">Informe generado desde el dataset del repositorio</p>
-<h1>German_Credit_Scoring_Data</h1>
-<p class="sub">Fuente: <code>german_credit_FINAL_FOR_BI.csv</code> · separador <code>&#x27;,&#x27;</code> · agregación <code>sum</code></p>
-<div class="kpis">
-<div class="kpi"><div class="v">1,000</div><div class="l">filas</div></div>
-<div class="kpi"><div class="v">56</div><div class="l">columnas</div></div>
-<div class="kpi"><div class="v">100.0%</div><div class="l">celdas con dato</div></div>
-<div class="kpi"><div class="v">9</div><div class="l">columnas numéricas</div></div>
-</div>
-<section class="card"><h2>Distribución de registros por property_real_estate</h2><svg viewBox="0 0 820 68" width="100%"><rect x="250" y="8" width="480.0" height="16" rx="4" fill="#38e07b" opacity=".85"/><text x="240" y="20" text-anchor="end" font-size="12" fill="#a9b8c7">False</text><text x="738.0" y="20" font-size="12" fill="#e6edf3">718</text><rect x="250" y="34" width="188.5" height="16" rx="4" fill="#38e07b" opacity=".85"/><text x="240" y="46" text-anchor="end" font-size="12" fill="#a9b8c7">True</text><text x="446.5" y="46" font-size="12" fill="#e6edf3">282</text></svg></section><section class="card"><h2>Suma de Debt_to_Duration_Ratio por property_real_estate</h2><svg viewBox="0 0 820 68" width="100%"><rect x="250" y="8" width="480.0" height="16" rx="4" fill="#4cc2ff" opacity=".85"/><text x="240" y="20" text-anchor="end" font-size="12" fill="#a9b8c7">False</text><text x="738.0" y="20" font-size="12" fill="#e6edf3">124,314</text><rect x="250" y="34" width="167.5" height="16" rx="4" fill="#4cc2ff" opacity=".85"/><text x="240" y="46" text-anchor="end" font-size="12" fill="#a9b8c7">True</text><text x="425.5" y="46" font-size="12" fill="#e6edf3">43,373</text></svg></section>
-<footer>Cada cifra se calcula del CSV versionado en este repositorio; no hay datos simulados.<br>
-Informe de analisis generado para revision; el dataset fuente es el versionado en el repositorio.</footer>
-</main></body></html>
+<title>Crédito: para qué se pide y quién devuelve</title><style>:root{--t:#1f2328;--g:#57606a;--l:#d0d7de;--a:#0f62fe;--r:#da1e28;--f:#f6f8fa}
+*{box-sizing:border-box}
+body{margin:0;color:var(--t);font:15px/1.6 -apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif}
+.w{max-width:1000px;margin:0 auto;padding:40px 24px 64px}
+header{border-bottom:1px solid var(--l);padding-bottom:24px}
+.eb{font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--a);font-weight:700}
+h1{font-size:30px;line-height:1.25;margin:10px 0 12px;letter-spacing:-.02em}
+h2{font-size:19px;margin:0 0 4px}
+.pq{color:var(--g);font-size:16px;max-width:70ch;margin:0}
+.k{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px;margin:28px 0 8px}
+.k div{background:var(--f);border:1px solid var(--l);border-radius:10px;padding:14px 16px}
+.k b{display:block;font-size:24px;letter-spacing:-.02em}
+.k span{font-size:12px;color:var(--g);text-transform:uppercase;letter-spacing:.06em}
+.k em{display:block;font-size:12px;color:var(--g);font-style:normal}
+.fl{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin:28px 0 4px}
+.fl i{font-size:12px;color:var(--g);text-transform:uppercase;letter-spacing:.06em;font-style:normal;margin-right:4px}
+button{font:inherit;font-size:13px;padding:6px 14px;border-radius:999px;border:1px solid var(--l);background:#fff;color:var(--g);cursor:pointer;transition:.15s}
+button:hover{border-color:var(--a);color:var(--a)}
+button[aria-pressed=true]{background:var(--a);border-color:var(--a);color:#fff}
+section{margin:36px 0}
+.s{color:var(--g);font-size:13px;margin:0 0 18px}
+.b{display:grid;gap:9px}
+.f{display:grid;grid-template-columns:132px 1fr 92px;gap:12px;align-items:center}
+.f u{font-size:13px;color:var(--g);text-align:right;text-decoration:none;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.p{background:var(--f);border-radius:4px;height:22px;overflow:hidden}
+.p div{height:100%;background:var(--a);border-radius:4px;transition:width .35s}
+.p .neg{background:var(--r)}
+.f s{font-size:13px;font-variant-numeric:tabular-nums;font-weight:600;text-align:right;text-decoration:none}
+table{width:100%;border-collapse:collapse;font-size:13.5px}
+th,td{text-align:left;padding:9px 10px;border-bottom:1px solid var(--l)}
+th{font-size:11.5px;text-transform:uppercase;letter-spacing:.06em;color:var(--g)}
+td.n{text-align:right;font-variant-numeric:tabular-nums}
+ul,ol{color:var(--g);font-size:13.5px;padding-left:20px}
+li{margin:6px 0}
+footer{border-top:1px solid var(--l);margin-top:44px;padding-top:16px;font-size:12px;color:var(--g)}
+code{background:var(--f);padding:2px 5px;border-radius:4px;font-size:12.5px}</style></head><body><div class="w">
+<header><p class="eb">Riesgo de crédito · German Credit</p><h1>Crédito: para qué se pide y quién devuelve</h1><p class="pq">Mil solicitudes de crédito con su resultado real. La pregunta del negocio no es «quién es buen pagador» en abstracto, sino en qué combinaciones de propósito, edad y plazo el riesgo se dispara, porque ahí se pone el límite o se pide garantía.</p></header>
+<div class="k"><div><span>Solicitudes</span><b>1.000</b><em>con resultado conocido</em></div><div><span>Buenos pagadores</span><b>70,0 %</b><em>target_good = 1</em></div><div><span>Importe medio</span><b>3.271 DM</b><em>préstamo solicitado</em></div><div><span>Edad media</span><b>36 años</b><em>del solicitante</em></div></div><section><h2>Buen pagador por propósito del crédito</h2><p class='s'>% de solicitudes devueltas según para qué se pidió</p><div class='b' id='g-p'></div></section>
+<section><h2>Buen pagador por tramo de edad</h2><p class='s'>los tres tramos del dataset alemán</p><div class='b' id='g-e'></div></section>
+<section><h2>Buen pagador por plazo</h2><p class='s'>a más plazo, más exposición</p><div class='b' id='g-z'></div></section>
+<section><h2>Propósito, importe y resultado</h2><p class='s'>ordenado por tasa de devolución</p><table><thead><tr><th>Propósito</th><th>Solicitudes</th><th>Buen pagador</th><th>Importe medio</th></tr></thead><tbody><tr><td>Reciclaje</td><td class='n'>9</td><td class='n'>88,9 %</td><td class='n'>1.206</td></tr><tr><td>Coche usado</td><td class='n'>103</td><td class='n'>83,5 %</td><td class='n'>5.370</td></tr><tr><td>Radio y TV</td><td class='n'>280</td><td class='n'>77,9 %</td><td class='n'>2.488</td></tr><tr><td>Muebles</td><td class='n'>181</td><td class='n'>68,0 %</td><td class='n'>3.067</td></tr><tr><td>Electrodomésticos</td><td class='n'>12</td><td class='n'>66,7 %</td><td class='n'>1.498</td></tr><tr><td>Reformas</td><td class='n'>22</td><td class='n'>63,6 %</td><td class='n'>2.728</td></tr><tr><td>Coche nuevo</td><td class='n'>234</td><td class='n'>62,0 %</td><td class='n'>3.063</td></tr><tr><td>Otros</td><td class='n'>12</td><td class='n'>58,3 %</td><td class='n'>8.209</td></tr><tr><td>Educación</td><td class='n'>50</td><td class='n'>56,0 %</td><td class='n'>3.180</td></tr></tbody></table></section>
+<section><h2>Cómo se calcula</h2><p class="s">Una fila por solicitud; cada gráfico aísla una sola dimensión.</p><ol><li>Cada fila es una solicitud; target_good vale 1 si el crédito se devolvió.</li><li>Los propósitos se leen de las columnas one-hot originales, no de una agrupación posterior.</li><li>El tramo joven se deriva por exclusión: ni adulto (25-44) ni senior (45+).</li><li>Se informa la tasa bruta por grupo; no hay modelo ni ajuste por otras variables.</li></ol></section>
+<section><h2>Qué no dice este informe</h2><p class="s">Qué no se puede concluir con mil solicitudes.</p><ul><li>Mil casos son pocos: un grupo de 50 solicitudes mueve la tasa varios puntos con un caso más.</li><li>Es una tasa bruta, sin controlar confusores: el propósito y la edad están correlacionados.</li><li>El dataset es de 1994 y en marcos alemanes; no describe el crédito actual.</li><li>No hay importe recuperado ni pérdida: solo se sabe si devolvió o no.</li></ul></section>
+<footer>Generado por <code>src/report.py</code> a partir de <code>german_credit_FINAL_FOR_BI.csv</code>. Sin dependencias,
+sin CDN: cada cifra de esta página sale de los datos del repositorio.</footer>
+</div><script>const DATOS={"filas":[
+{"a":"todos","g":"proposito","k":"Coche nuevo","v":62.0,"u":"%"},
+{"a":"todos","g":"proposito","k":"Coche usado","v":83.5,"u":"%"},
+{"a":"todos","g":"proposito","k":"Radio y TV","v":77.9,"u":"%"},
+{"a":"todos","g":"proposito","k":"Muebles","v":68.0,"u":"%"},
+{"a":"todos","g":"proposito","k":"Electrodomésticos","v":66.7,"u":"%"},
+{"a":"todos","g":"proposito","k":"Reformas","v":63.6,"u":"%"},
+{"a":"todos","g":"proposito","k":"Educación","v":56.0,"u":"%"},
+{"a":"todos","g":"proposito","k":"Reciclaje","v":88.9,"u":"%"},
+{"a":"todos","g":"proposito","k":"Otros","v":58.3,"u":"%"},
+{"a":"todos","g":"edad","k":"Adulto 25-44","v":70.9,"u":"%"},
+{"a":"todos","g":"edad","k":"Senior 45+","v":75.1,"u":"%"},
+{"a":"todos","g":"edad","k":"Joven hasta 24","v":59.1,"u":"%"},
+{"a":"todos","g":"plazo","k":"13-36 m","v":67.7,"u":"%"},
+{"a":"todos","g":"plazo","k":"más de 36 m","v":48.3,"u":"%"}
+],"graficos":[{"id":"p","grupo":"proposito","titulo":"Buen pagador por propósito del crédito","subtitulo":"% de solicitudes devueltas según para qué se pidió","unidad":"%"},{"id":"e","grupo":"edad","titulo":"Buen pagador por tramo de edad","subtitulo":"los tres tramos del dataset alemán","unidad":"%"},{"id":"z","grupo":"plazo","titulo":"Buen pagador por plazo","subtitulo":"a más plazo, más exposición","unidad":"%"}]};const D=DATOS;let act='todos';
+const num=(v,u)=>{const n=Math.abs(v).toLocaleString('es-ES',{maximumFractionDigits:u==='%'?1:0});return (v<0?'-':'')+n+(u==='%'?' %':'')};
+function pinta(){D.graficos.forEach(g=>{const c=document.getElementById('g-'+g.id);
+const fs=D.filas.filter(f=>f.g===g.grupo&&(act==='todos'||f.a===act));
+if(!fs.length){c.innerHTML='<p class="s">Sin datos para este filtro.</p>';return}
+const o={};fs.forEach(f=>{o[f.k]=(o[f.k]||0)+f.v});
+const ks=(g.orden||Object.keys(o)).filter(k=>k in o),vs=ks.map(k=>o[k]);
+const max=Math.max(...vs.map(Math.abs),1),u=g.unidad||fs[0].u||'';
+c.innerHTML=ks.map((k,i)=>{const v=vs[i];
+return '<div class="f"><u>'+k+'</u><div class="p"><div class="'+(v<0?'neg':'')+'" style="width:'+Math.max(Math.abs(v)/max*100,.6)+'%"></div></div><s>'+num(v,u)+'</s></div>'}).join('')})}
+document.querySelectorAll('button').forEach(b=>b.addEventListener('click',()=>{act=b.dataset.v;
+document.querySelectorAll('button').forEach(o=>o.setAttribute('aria-pressed',o===b));pinta()}));
+pinta();</script></body></html>
