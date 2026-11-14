@@ -19,6 +19,32 @@ jobs:
           python-version: '3.12'
       - name: Dependencias
         run: pip install --quiet nbconvert ipykernel pandas matplotlib scikit-learn
+      - name: Cabecera para el reclutador
+        run: |
+          python - <<'PY'
+          import nbformat
+          from nbformat.v4 import new_markdown_cell
+
+          RUTA = 'German_Credit_Data.ipynb'
+          TEXTO = '''[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/Nicolenki7/German_Credit_Scoring_Data/blob/main/German_Credit_Data.ipynb)
+
+> **En 30 segundos:** 1 de cada 3 créditos acaba en impago y el plazo manda más que el perfil: por encima de 36 meses la mora llega al 52 %.
+>
+> - 300 de 1.000 créditos impagados (30 %)
+> - Plazo mayor a 36 meses: 51,7 % de impago; hasta 12 meses: 21,2 %
+> - Variable con más peso en el modelo: estado de cuenta por debajo de 0
+>
+> Los resultados ya están ejecutados: no hace falta correr nada para leerlos.'''
+
+          nb = nbformat.read(RUTA, as_version=4)
+          primero = ''.join(nb.cells[0].source) if nb.cells else ''
+          if 'En 30 segundos' not in primero:
+              nb.cells.insert(0, new_markdown_cell(TEXTO))
+              nbformat.write(nb, RUTA)
+              print('cabecera insertada')
+          else:
+              print('cabecera ya presente')
+          PY
       - name: Ejecutar
         run: jupyter nbconvert --to notebook --execute --inplace "German_Credit_Data.ipynb" --ExecutePreprocessor.timeout=900
       - name: Commit
