@@ -26,11 +26,15 @@ jobs:
           from nbformat.v4 import new_markdown_cell
 
           RUTA = 'German_Credit_Data.ipynb'
-          TEXTO = '[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/Nicolenki7/German_Credit_Scoring_Data/blob/main/German_Credit_Data.ipynb)\n\n> **En 30 segundos:** 1 de cada 3 créditos acaba en impago y el plazo manda más que el perfil: por encima de 36 meses la mora llega al 52 %.\n>\n> - 300 de 1.000 créditos impagados (30 %)\n> - Plazo mayor a 36 meses: 51,7 % de impago; hasta 12 meses: 21,2 %\n> - Variable con más peso en el modelo: estado de cuenta por debajo de 0\n>\n> Los resultados ya están ejecutados: no hace falta correr nada para leerlos.'
+          TEXTO = '[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/Nicolenki7/German_Credit_Scoring_Data/blob/main/German_Credit_Data.ipynb)\n\n> **En 30 segundos:** 1 de cada 3 créditos acaba en impago; el plazo lo agrava (52 % por encima de 36 meses frente a 21 % hasta 12) y el modelo señala el estado de la cuenta corriente como el factor más fuerte.\n>\n> - 300 de 1.000 créditos impagados (30 %)\n> - Plazo mayor a 36 meses: 51,7 % de impago; hasta 12 meses: 21,2 %\n> - Variable con más peso en el modelo: estado de cuenta por debajo de 0 (odds ratio 2,08)\n>\n> Los resultados ya están ejecutados: no hace falta correr nada para leerlos.'
 
           nb = nbformat.read(RUTA, as_version=4)
           primero = ''.join(nb.cells[0].source) if nb.cells else ''
-          if 'En 30 segundos' not in primero:
+          if 'colab-badge.svg' in primero:
+              nb.cells[0] = new_markdown_cell(TEXTO)
+              nbformat.write(nb, RUTA)
+              print('cabecera actualizada')
+          elif 'En 30 segundos' not in primero:
               nb.cells.insert(0, new_markdown_cell(TEXTO))
               nbformat.write(nb, RUTA)
               print('cabecera insertada')
