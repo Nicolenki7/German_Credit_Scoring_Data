@@ -1,0 +1,30 @@
+name: ejecutar notebook con salidas
+
+on:
+  push:
+    paths:
+      - '.github/workflows/ejecutar-notebook.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  ejecutar:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Dependencias
+        run: pip install --quiet nbconvert ipykernel pandas matplotlib scikit-learn
+      - name: Ejecutar
+        run: jupyter nbconvert --to notebook --execute --inplace "German_Credit_Data.ipynb" --ExecutePreprocessor.timeout=900
+      - name: Commit
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add "German_Credit_Data.ipynb"
+          git commit -m "chore: notebook ejecutado con salidas guardadas" || echo "sin cambios"
+          git push
